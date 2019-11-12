@@ -5,4 +5,4 @@ notifications:
 python:
 - '3.6'
 install: pip install tox-travis
-script: pytest test/testUsersData.py
+script: tox -e pytest
