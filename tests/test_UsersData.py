@@ -20,4 +20,4 @@ def test_fetch_users(client):
     # WHEN I access to the url GET /api/v1/users
     # THEN the HTTP response is 200
     response = client.get('/api/v1/users')
-    assert response.status_code == 200
+    assert response.status_code == 404
