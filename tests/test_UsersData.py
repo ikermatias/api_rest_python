@@ -15,7 +15,7 @@ def test_get_health(client):
     response = client.get('/health')
     assert response.status_code == 404
 
-def test_fetch_users():
+def test_fetch_users(client):
     # GIVEN not query parameters or payload
     # WHEN I access to the url GET /api/v1/users
     # THEN the HTTP response is 200
