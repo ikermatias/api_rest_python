@@ -1,0 +1,143 @@
+openapi: 3.0.0
+info:
+   title: Students Users API
+   version: '1.0.0'
+paths:
+
+    /api/v1/users:
+      get:
+        tags:
+          - Users
+        x-swagger-router-controller: app
+        operationId: usersData.fetch_users
+        summary: Return all the students users
+        parameters:
+          - name: id
+            in: query
+            schema:
+              type: integer
+        responses:
+          '200':
+            description: Returns students users
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Users'
+          '404':
+            description: User does not exist
+      post:
+        summary: Create a student user
+        tags:
+          - user
+        x-swagger-router-controller: app
+        operationId: usersData.create_user
+        requestBody:
+          description: User to add to the system
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        responses:
+          '201':
+            description: User record interpreted by backend
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/User"
+          default:
+            description: Unexpected error
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Error"
+    /api/v1/users/{user_id}:
+      post:
+        summary: Update information user
+        tags:
+          - Users
+        requestBody:
+          description: User to update information
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        x-swagger-router-controller: app
+        operationId: usersData.update_user
+        parameters:
+          - name: user_id
+            in: path
+            required: true
+            description: The id of the user to update
+            schema:
+              type: integer
+        responses:
+          '201':
+            description: User information updated
+            content:
+             application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+          default:
+            description: unexpected error
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Error"
+      delete:
+        summary: Delete user
+        tags:
+          - User
+        x-swagger-router-controller: app
+        operationId: usersData.remove_user
+        parameters:
+          - name: user_id
+            in: path
+            required: true
+            description: The id of the user to update
+            schema:
+              type: integer
+        responses:
+          '204':
+            description: Null response
+          default:
+            description: unexpected error
+            content:
+              application/json:
+                schema:
+                  $ref: "#/components/schemas/Error"
+
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        name:
+          type: string
+          example: calero
+        id:
+          type: integer
+          example: 3
+          format: int64
+
+    Users:
+      type: array
+      items:
+        $ref: "#/components/schemas/User"
+
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+
+
