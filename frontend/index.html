@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="container text-center ">
+			<ul class="nav nav-tabs my-4">
+				<li class="nav-item">
+					<a class="nav-link active" data-toggle="tab" href="#agregar">Agregar</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#menu1">Buscar</a>
+				</li>
+			</ul>
+			<h3 class="my-3">Microservicios V.1</h3>
+			<div class="tab-content">
+				<div class="tab-pane active container" id="agregar">
+					<form class="text-left">
+						<div class="form-group">
+							<label for="name">Nombre:</label>
+							<input type="text" class="form-control" id="name" placeholder="Nombre">
+						</div>
+						<div class="form-group">
+							<label for="id">Id:</label>
+							<input type="text" class="form-control" id="id" placeholder="id">
+						</div>
+						<input class="btn btn-success btn-block" type="submit" name="Enviar" value="Agregar">
+					</form>
+				</div>
+				<div class="tab-pane container" id="menu1">
+					<form class="text-left my-3">
+						<div class="form-group">
+							<div class="form-group">
+								<label for="name">Id:</label>
+								<input type="text" class="form-control" id="Id" placeholder="Id">
+							</div>
+							<input class="btn btn-success btn-block" type="submit" name="Enviar" value="Buscar">
+						</div>
+					</form>
+
+					<div class="alert alert-warning">
+						RESULTADOS
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	</html>
